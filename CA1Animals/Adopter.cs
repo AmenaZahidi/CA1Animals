@@ -7,10 +7,11 @@ using System;
     {
         private static int nextID = 1;
 
+        
         public Adopter(string name, string email, string password)
-            : base(nextID, name, email, password)
+            : base(nextID++, name, email, password)
         {
-            nextID++;
+            // nextID++;
         }
 
         public override void DisplayMenu()
@@ -47,13 +48,13 @@ using System;
 
                 switch (choice)
                 {
-                    case 1: // View all adoptable animals
+                    case 1: 
                         foreach (var a in AnimalList)
                             if (a.Adoption)
                                 Console.WriteLine(a);
                         break;
 
-                    case 2: // Filter by type
+                    case 2:  // fillter animal
                         AnimalType selectedType = SelectAnimalType();
                         foreach (var a in AnimalList)
                             if (a.Type == selectedType && a.Adoption)
@@ -66,7 +67,7 @@ using System;
 
                     default:
                         Console.WriteLine("Invalid option. Choose 1-3.\n");
-                        break;
+                         continue;
                 }
             }
 
